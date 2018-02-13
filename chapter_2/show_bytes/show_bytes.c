@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 
 typedef unsigned char *byte_pointer;
 
@@ -72,6 +73,15 @@ void is_little_endian(){
 		
 }
 
+unsigned replace_byte(unsigned x, int i, unsigned char b) {
+
+	unsigned byte = 0x00000000 | b;
+	unsigned mask = ~(0x000000FF << (i*8));
+	x &= mask;
+	byte = byte << (i*8);
+	return x | byte;
+}
+
 int main() { 
 	const char *s = "abcdef";
 	int i = 16;
@@ -85,5 +95,7 @@ int main() {
 	
 	printf("x = 0x%x\n y = 0x%x\n", x, y);
 	printf("keep_least_significant(x,y) = 0x%x\n", keep_least_significant(x,y));
+	printf("Test replace_byte : 0x%x\n",replace_byte(0x12345678, 3, 0xAB));
+	printf("Int MAX: %x", INT_MAX);
 	return 0;
 }
