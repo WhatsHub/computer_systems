@@ -164,10 +164,9 @@ int getByte(int x, int n) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  int mask = (1 << 31) - 1;
-  mask = mask >> (31 - n);
-  printf("TEST MASK: 0x%x\n", mask);
-  return (x >> n) & (~mask);
+  int mask = (~(~0 << n) << 31) >> n;
+  x = x >> n; 
+  return x & ~(mask << 1); 
 }
 /*
  * bitCount - returns count of number of 1's in word
