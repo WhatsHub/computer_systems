@@ -1,7 +1,7 @@
 /* 
  * CS:APP Data Lab 
  * 
- * <Please put your name and userid here>
+ * <Joschua Fink>>
  * 
  * bits.c - Source file with your solutions to the Lab.
  *          This is the file you will hand in to your instructor.
@@ -139,7 +139,7 @@ NOTES:
  *   Rating: 1
  */
 int bitAnd(int x, int y) {
-  return 2;
+  return ~(~x | ~y);
 }
 /* 
  * getByte - Extract byte n from word x
@@ -151,13 +151,8 @@ int bitAnd(int x, int y) {
  */
 int getByte(int x, int n) {
 
-
-
-
-
-
-
-  return 2;
+  x = x >> (n << 3);
+  return x & 0xFF;
 
 }
 /* 
@@ -169,7 +164,10 @@ int getByte(int x, int n) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  return 2;
+  int mask = (1 << 31) - 1;
+  mask = mask >> (31 - n);
+  printf("TEST MASK: 0x%x\n", mask);
+  return (x >> n) & (~mask);
 }
 /*
  * bitCount - returns count of number of 1's in word
@@ -179,7 +177,38 @@ int logicalShift(int x, int n) {
  *   Rating: 4
  */
 int bitCount(int x) {
-  return 2;
+  int count = x & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  count += (x >> 1) & 1;
+  return count;
 }
 /* 
  * bang - Compute !x without using !
