@@ -164,10 +164,8 @@ int getByte(int x, int n) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  int mask = (1 << 31) - 1;
-  mask = mask >> (31 - n);
-  printf("TEST MASK: 0x%x\n", mask);
-  return (x >> n) & (~mask);
+  int mask = (~(~0 << n) << 31) >> n;
+  return (x >> n) & ~(mask << 1) ;
 }
 /*
  * bitCount - returns count of number of 1's in word
@@ -177,38 +175,8 @@ int logicalShift(int x, int n) {
  *   Rating: 4
  */
 int bitCount(int x) {
-  int count = x & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  count += (x >> 1) & 1;
-  return count;
+
+  return 2;
 }
 /* 
  * bang - Compute !x without using !
