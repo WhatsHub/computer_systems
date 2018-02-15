@@ -176,7 +176,6 @@ int logicalShift(int x, int n) {
  *   Rating: 4
  */
 int bitCount(int x) {
-
   return 2;
 }
 /* 
@@ -196,7 +195,7 @@ int bang(int x) {
  *   Rating: 1
  */
 int tmin(void) {
-  return 2;
+  return 0x1 << 31;
 }
 /* 
  * fitsBits - return 1 if x can be represented as an 
@@ -239,7 +238,7 @@ int negate(int x) {
  *   Rating: 3
  */
 int isPositive(int x) {
-  return 2;
+  return !(((x >> 31) & 0x01) | !x);
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
